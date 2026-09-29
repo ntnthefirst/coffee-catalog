@@ -12,6 +12,7 @@ export function barSlider(cfg) {
   const minN = Math.round((cfg.min || 0) / step);
   const maxN = Math.round(cfg.max / step);
   let n = Math.round(cfg.value / step);
+  let limitN = maxN;                         // bars beyond this are locked (dynamic maximum)
 
   const root = document.createElement("div");
   root.className = "bs" + (cfg.chunky ? " bs--chunky" : "");
@@ -36,8 +37,10 @@ export function barSlider(cfg) {
 
   function paint() {
     const value = n * step;
-    bars.forEach((b, j) => b.classList.toggle("on", j < n));
+    bars.forEach((b, j) => { b.classList.toggle("on", j < n); b.classList.toggle("lock", j >= limitN); });
     valueEl.textContent = value;
+    root.classList.toggle("is-capped", limitN < maxN);
+    track.setAttribute("aria-valuemax", Math.max(cfg.min || 0, limitN * step));
     track.setAttribute("aria-valuenow", value);
     track.setAttribute("aria-valuetext", `${value} ${unit}`);
     bubble.textContent = `${value} ${unit}`;
@@ -53,7 +56,7 @@ export function barSlider(cfg) {
   }
 
   function setN(next, { silent = false, animate = false } = {}) {
-    next = clamp(next, minN, maxN);
+    next = clamp(next, minN, Math.max(minN, limitN));
     if (next === n && !animate) return;
     n = next;
     paint();
@@ -96,7 +99,7 @@ export function barSlider(cfg) {
     const keys = { ArrowRight: 1, ArrowUp: 1, ArrowLeft: -1, ArrowDown: -1, PageUp: 5, PageDown: -5 };
     if (e.key in keys) { e.preventDefault(); setN(n + keys[e.key], { animate: true }); }
     else if (e.key === "Home") { e.preventDefault(); setN(minN, { animate: true }); }
-    else if (e.key === "End") { e.preventDefault(); setN(maxN, { animate: true }); }
+    else if (e.key === "End") { e.preventDefault(); setN(limitN, { animate: true }); }
   });
 
   paint();
@@ -104,6 +107,8 @@ export function barSlider(cfg) {
     el: root,
     /** update from outside (presets, URL ...) without firing onChange */
     set(value, { animate = false } = {}) { setN(Math.round(value / step), { silent: true, animate }); },
+    /** dynamic maximum (in value units): bars beyond it are locked */
+    setLimit(value) { limitN = clamp(Math.floor(value / step), minN, maxN); if (n > limitN) n = limitN; paint(); },
     setColor(color) { root.style.setProperty("--c", color); },
     setLabel(text) { root.querySelector(".bs__label").textContent = text; track.setAttribute("aria-label", text); },
   };

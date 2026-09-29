@@ -13,12 +13,13 @@ import { makeSteps } from "../logic/steps.js";
 import {
   analyse, bCtx, LIMITS, defaultBuilder, builderFromRecipe, randomBuilder, encodeBuilder, decodeBuilder,
 } from "../logic/builder-model.js";
+import { normalize, maxFor, roomLeft, capacity, fixedMl, usedMl } from "../logic/capacity.js";
 import { barSlider } from "./bar-slider.js";
 import { segHTML, setSeg } from "./segmented.js";
 import { toast } from "./toast.js";
 
 const PRESETS = ["espresso", "cappuccino", "flat-white", "latte", "americano", "mocha", "iced-latte", "iced-americano", "vanilla-latte"];
-const TOPPING_ICON = { whipped: "cloud", cocoa: "circle-dotted", cinnamon: "sparkles", cayenne: "pepper", caramel: "droplet", chocolate: "droplet", seasalt: "diamond" };
+const TOPPING_ICON = { whipped: "cloud", cocoa: "circle-dotted", cinnamon: "sparkles", cayenne: "pepper", caramel: "droplet", chocolate: "droplet", seasalt: "diamond", nutmeg: "circle-dotted", honey: "droplet" };
 const LIGHT_TOPPINGS = new Set(["whipped", "seasalt"]);
 const cubes = (n) => Array.from({ length: n }, () => icon("cube")).join("");
 const cups = (n) => Array.from({ length: n }, () => icon("coffee")).join("");
@@ -42,6 +43,7 @@ function html() {
     <div class="bpreview__art" id="b-art"></div>
     <div class="bpreview__info">
       <h2 class="bpreview__name" id="b-name" aria-live="polite"></h2>
+      <p class="bpreview__blurb" id="b-blurb"></p>
       <div class="bpreview__stats" id="b-stats"></div>
       <div class="bpreview__mix" id="b-mix"></div>
       <div class="bpreview__actions">
@@ -70,6 +72,7 @@ function html() {
 
     ${section("Milk", "milk", `
       <div class="swatches" role="group" aria-label="Milk type">${milkSwatches}</div>
+      <div class="room" id="b-room" aria-live="polite"><span class="room__txt"></span><i class="room__bar"><b></b></i></div>
       <div class="bsec__sliders" id="b-sliders"></div>
       ${segHTML("order", [{ v: "e", label: "Mixed", icon: "wave-sine" }, { v: "m", label: "Layered", icon: "stack-2" }], "seg--sm")}`)}
 
@@ -133,6 +136,8 @@ export function update(opts = {}) {
   ensureBuilt();
   const root = $("#builder");
   const b = state.builder, hot = b.temp === "hot";
+  const before = { cold: b.cold, milk: b.milk, foam: b.foam, water: b.water };
+  normalize(b);
   const info = analyse(b);
   const ctx = bCtx(b);
   const st = statsOf(info.ing, b.shots * (b.style === "lungo" ? 1.25 : 1), b.decaf);
@@ -156,8 +161,18 @@ export function update(opts = {}) {
   sliders.milk.setLabel(hot ? "Steamed milk" : "Milk");
   sliders.foam.setLabel(hot ? "Foam" : "Cold foam");
   sliders.water.setLabel(hot ? "Hot water" : "Water");
-  const wave = { animate: !!opts.wave };
-  sliders.splash.set(b.cold, wave); sliders.milk.set(b.milk, wave); sliders.foam.set(b.foam, wave); sliders.water.set(b.water, wave);
+  // every slider gets a dynamic maximum from the shared cup budget
+  const map = { cold: "splash", milk: "milk", foam: "foam", water: "water" };
+  Object.entries(map).forEach(([key, id]) => {
+    sliders[id].setLimit(maxFor(key, b));
+    sliders[id].set(b[key], { animate: !!opts.wave || b[key] !== before[key] });
+  });
+  const total = Math.max(1, capacity(b) - fixedMl(b));
+  const left = roomLeft(b);
+  const room = $("#b-room");
+  room.querySelector(".room__txt").textContent = left > 0 ? `${left} ml of room left` : "Cup is full";
+  room.querySelector(".room__bar b").style.width = `${Math.min(100, (usedMl(b) / total) * 100)}%`;
+  room.classList.toggle("is-full", left === 0);
   syncPumpSliders();
 
   // preview
@@ -166,6 +181,7 @@ export function update(opts = {}) {
   art.className = `bpreview__art bpreview__art--${b.temp}`;
   art.innerHTML = cupSVG(vis, { label: info.name, pour: !!opts.animate, wobble: !!opts.wobble });
   $("#b-name").textContent = info.name;
+  $("#b-blurb").textContent = info.blurb;
   $("#b-stats").innerHTML =
     `<span class="meta">${icon("droplet")}${Math.round(st.volume)} ml</span>` +
     `<span class="meta">${icon("bolt")}${st.caffeine} mg</span>` +

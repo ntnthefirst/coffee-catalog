@@ -34,6 +34,7 @@
 
   &__name { font-size: 22px; line-height: 1.1; }
   &__stats { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 12px; margin-top: 5px; }
+  &__blurb { display: none; margin-top: 4px; color: var(--ink-2); font-size: 15px; line-height: 1.4; }
   &__mix { display: none; }
   &__actions {
     display: flex;
@@ -96,6 +97,9 @@
 }
 .seg--grow { flex: 1; }
 .seg .seg__btn .ic + .ic { margin-left: -6px; }
+
+.bcontrols .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(62px, 1fr)); gap: 12px 4px; justify-items: center; }
+.bcontrols .sw { width: 100%; max-width: 74px; }
 
 .bs--enter { animation: rise .45s $ease both; }
 
@@ -160,10 +164,33 @@
 
     &__art { height: 380px; padding: 30px; border-radius: $radius-lg + 6; }
     &__name { font-size: 36px; }
+    &__blurb { display: block; }
     &__stats { gap: 6px 16px; font-size: 15px; }
     &__mix { display: block; }
     &__actions { gap: 10px; .iconbtn { width: 50px; height: 50px; border-radius: 17px; font-size: 22px; } }
   }
   .preset { width: 92px; }
   .presets { margin: 0; padding: 2px 0 6px; flex-wrap: wrap; }
+}
+
+// how much of the cup is used
+.room {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink-2);
+  font-size: 13.5px;
+  font-weight: 500;
+
+  &__txt { flex: none; min-width: 112px; }
+  &__bar {
+    position: relative;
+    flex: 1;
+    height: 8px;
+    border-radius: 99px;
+    background: var(--fill);
+    overflow: hidden;
+    b { display: block; height: 100%; border-radius: inherit; background: var(--purple); transition: width .45s $spring, background-color .3s; }
+  }
+  &.is-full { color: var(--crimson); .room__bar b { background: var(--crimson); } }
 }
