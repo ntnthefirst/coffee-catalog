@@ -2,8 +2,9 @@
 
 // ---------- recipe detail sheet ----------
 .dt-hero {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 310px;
   padding: 56px 40px 22px;
   background: var(--tone);
@@ -46,6 +47,8 @@
 }
 .strength--lg i { width: 6px; }
 
+.dt-row .swatches { flex: 1 1 100%; flex-wrap: nowrap; gap: 4px; overflow-x: auto; scrollbar-width: none; padding: 6px 4px 4px; margin: -6px -4px -4px; &::-webkit-scrollbar { display: none; } }
+.dt-row .sw { flex: 1 0 58px; width: auto; min-width: 58px; }
 .dt-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; justify-content: space-between; }
 .dt-note {
   display: flex;

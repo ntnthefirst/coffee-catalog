@@ -44,11 +44,12 @@ export function groupsOf(r) {
 /** background tone of a recipe tile: a CSS colour variable */
 export function toneOf(r) {
   const g = groupsOf(r);
-  if (r.temp === "iced") return "var(--purple-t)";
-  if (g.has("spicy")) return "var(--crimson-t)";
+  if (r.temp === "iced") return "var(--purple-t2)";
+  if (g.has("spicy")) return "var(--crimson-t2)";
   if (g.has("dessert")) return "var(--pink-t2)";
   if (g.has("flavoured")) return "var(--pink-t)";
-  return "var(--fill)";
+  if (g.has("milk")) return "var(--purple-t)";
+  return "var(--pink-t)";
 }
 
 export const allStats = () => recipes.map((r) => ({ r, s: recipeStats(r) }));

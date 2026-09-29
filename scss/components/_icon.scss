@@ -1,11 +1,16 @@
-// SVG files from assets/icons are used as CSS masks, so they take any colour:
-//   <i class="ic" style="--ic:url(assets/icons/flame.svg)"></i>
+// SVG files from assets/icons are used as CSS masks, so they take any colour.
+// The mask-image itself is set inline by js/render/icons.js:
+//   <i class="ic" style="mask-image:url(assets/icons/flame.svg)"></i>
 .ic {
   display: inline-block;
   flex: none;
   width: 1.3em;
   height: 1.3em;
   background: currentColor;
-  -webkit-mask: var(--ic) center / contain no-repeat;
-  mask: var(--ic) center / contain no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }

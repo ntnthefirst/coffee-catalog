@@ -51,7 +51,6 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  border-radius: $radius-lg;
   &::-webkit-scrollbar { display: none; }
   &:focus-visible { outline-offset: 4px; }
 }

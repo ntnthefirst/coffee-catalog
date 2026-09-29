@@ -62,7 +62,7 @@ function html() {
     ]))}
 
     ${section("Espresso", "coffee", `
-      ${segHTML("shots", [{ v: "1", html: cups(1), title: "1 shot" }, { v: "2", html: cups(2), title: "2 shots" }])}
+      ${segHTML("shots", [{ v: "1", html: cups(1), label: "1 shot" }, { v: "2", html: cups(2), label: "2 shots" }])}
       <div class="bsec__row">
         ${segHTML("style", [{ v: "ristretto", label: "Short" }, { v: "normal", label: "Normal" }, { v: "lungo", label: "Long" }], "seg--sm seg--grow")}
         <button type="button" class="pill-toggle" data-act="decaf" aria-pressed="false">${icon("zzz")}Decaf</button>
