@@ -1,0 +1,27 @@
+@use "sass:map";
+@use "variables" as *;
+
+// Mobile-first media query: @include up(md) { ... }
+@mixin up($name) {
+  @media (min-width: map.get($breakpoints, $name)) { @content; }
+}
+
+// Mix a palette colour with white: tint(var(--purple), 12%)
+@function tint($color, $percent) {
+  @return color-mix(in srgb, #{$color} #{$percent}, var(--white));
+}
+
+// Stretch a pseudo element over its parent so a whole tile is one big link
+@mixin cover-link {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+// Springy press feedback used by all tappable things
+@mixin pressable($scale: .94) {
+  transition: transform .3s $spring, background-color .2s, color .2s, box-shadow .2s;
+  &:active { transform: scale($scale); }
+}

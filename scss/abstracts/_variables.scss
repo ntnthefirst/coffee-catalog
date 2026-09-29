@@ -1,0 +1,18 @@
+// Sass-level constants (breakpoints, motion, layout sizes).
+// The colour palette itself lives in base/_tokens.scss as CSS custom properties.
+
+$breakpoints: (
+  sm: 560px,
+  md: 900px,
+  lg: 1200px,
+);
+
+$ease:   cubic-bezier(.2, .8, .2, 1);
+$spring: cubic-bezier(.34, 1.56, .64, 1);
+
+$rail-w:   92px;
+$tabbar-h: 68px;
+
+$radius-lg: 28px;
+$radius-md: 18px;
+$radius-sm: 12px;
