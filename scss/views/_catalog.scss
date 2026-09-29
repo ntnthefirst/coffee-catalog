@@ -1,0 +1,111 @@
+@use "../abstracts" as *;
+
+// ---------- search + sort ----------
+.searchbar { position: relative; display: flex; gap: 10px; margin-bottom: 8px; }
+
+.search {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+
+  > .ic { position: absolute; left: 16px; color: var(--ink-3); font-size: 22px; pointer-events: none; }
+
+  input {
+    width: 100%;
+    height: 52px;
+    padding: 0 48px 0 48px;
+    border: 0;
+    border-radius: 18px;
+    background: var(--fill);
+    color: var(--ink);
+    font: inherit;
+    font-size: 16px;
+    transition: background-color .2s, box-shadow .3s;
+
+    &::placeholder { color: var(--ink-3); }
+    &:focus { outline: none; background: var(--white); box-shadow: 0 0 0 2px var(--purple); }
+    &::-webkit-search-cancel-button { display: none; }
+  }
+
+  &__clear {
+    position: absolute;
+    right: 8px;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    color: var(--ink-3);
+    transform: scale(0);
+    transition: transform .35s $spring, background-color .2s;
+
+    &.is-on { transform: scale(1); }
+    &:hover { background: var(--fill-2); }
+  }
+}
+
+.iconbtn--lg { width: 52px; height: 52px; border-radius: 18px; }
+
+// ---------- tiles ----------
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 14px;
+  margin-top: 8px;
+
+  @include up(sm) { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 18px; }
+  @include up(md) { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 34px 22px; }
+}
+
+.tile {
+  position: relative;
+  animation: rise .55s $ease both;
+  animation-delay: calc(min(var(--i), 14) * 35ms);
+
+  &__art {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1;
+    padding: 13% 12% 11%;
+    border-radius: $radius-lg;
+    background: var(--tone);
+    transition: transform .5s $spring;
+
+    .cup { width: 100%; height: 100%; transition: transform .6s $spring; }
+  }
+
+  &:hover &__art { transform: translateY(-5px); }
+  &:hover &__art .cup { transform: scale(1.08) rotate(-2.5deg); }
+  &:active &__art { transform: scale(.96); }
+  &:has(&__link:focus-visible) &__art { outline: 3px solid color-mix(in srgb, var(--purple) 55%, transparent); outline-offset: 3px; }
+
+  &__strength { position: absolute; left: 16px; bottom: 14px; }
+  .fav { position: absolute; top: 10px; right: 10px; z-index: 2; }
+
+  &__name { margin-top: 12px; font-size: 17px; line-height: 1.2; }
+  &__link { text-decoration: none; &::after { @include cover-link; } &:focus-visible { outline: none; } }
+  &__meta { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 5px; }
+}
+
+// heart button: outline <-> filled
+.fav {
+  .fav__on { display: none; }
+  &.is-on { color: var(--crimson); .fav__on { display: inline-block; } .fav__off { display: none; } }
+}
+
+// ---------- empty ----------
+.empty {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 70px 0;
+  text-align: center;
+  color: var(--ink-2);
+  animation: rise .5s $ease both;
+
+  .ic { font-size: 54px; color: var(--pink); animation: wiggle 1.6s ease-in-out infinite; }
+  h3 { color: var(--ink); font-size: 22px; }
+  .btn { margin-top: 8px; height: 46px; }
+}
