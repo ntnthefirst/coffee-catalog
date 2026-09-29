@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>About · Dedica Coffee</title>
+  <meta name="description" content="Where the measurements in Dedica Coffee come from, what the numbers mean and which sources were used.">
+  <meta name="theme-color" content="#FBFFFE">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23623CEA'/%3E%3Cpath d='M18 26h24v10a10 10 0 0 1-10 10h-4a10 10 0 0 1-10-10z' fill='%23FBFFFE'/%3E%3Cpath d='M42 29h3a5 5 0 0 1 0 10h-3' stroke='%23FBFFFE' stroke-width='4' fill='none'/%3E%3C/svg%3E">
+  <link rel="preload" href="assets/fonts/fredoka-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <main class="about">
+    <a class="iconbtn about__back" href="index.html" aria-label="Back to the coffees"><i class="ic" style="-webkit-mask-image:url(assets/icons/arrow-left.svg);mask-image:url(assets/icons/arrow-left.svg)" aria-hidden="true"></i></a>
+
+    <header class="about__hero">
+      <span class="about__logo"><i class="ic" style="-webkit-mask-image:url(assets/icons/coffee.svg);mask-image:url(assets/icons/coffee.svg)" aria-hidden="true"></i></span>
+      <h1>About</h1>
+      <p>Dedica Coffee is a catalog of 57 hot and iced coffees, measured for the <span id="machine-name">De’Longhi Dedica Arte</span>. Here is where the numbers come from.</p>
+    </header>
+
+    <section class="about__sec">
+      <h2>Your machine</h2>
+      <dl class="kv" id="machine"></dl>
+    </section>
+
+    <section class="about__sec">
+      <h2>The numbers</h2>
+      <dl class="kv" id="numbers"></dl>
+    </section>
+
+    <section class="about__sec">
+      <h2>Good to know</h2>
+      <ul class="notes">
+        <li><i class="ic" style="-webkit-mask-image:url(assets/icons/droplet.svg);mask-image:url(assets/icons/droplet.svg)" aria-hidden="true"></i><p>One espresso shot is <b>25 ml</b>, a double is <b>50 ml</b>. On the Dedica use <b>8 g</b> (single) and <b>15 g</b> (double) in the double-wall baskets.</p></li>
+        <li><i class="ic" style="-webkit-mask-image:url(assets/icons/bolt.svg);mask-image:url(assets/icons/bolt.svg)" aria-hidden="true"></i><p>Caffeine is an <b>estimate</b> of about 63 mg per shot. Real values depend on beans, roast and dose.</p></li>
+        <li><i class="ic" style="-webkit-mask-image:url(assets/icons/candy.svg);mask-image:url(assets/icons/candy.svg)" aria-hidden="true"></i><p>One syrup pump is taken as <b>10 ml</b>. Pumps differ per bottle, so measure yours once.</p></li>
+        <li><i class="ic" style="-webkit-mask-image:url(assets/icons/coffee.svg);mask-image:url(assets/icons/coffee.svg)" aria-hidden="true"></i><p>Only espresso, ristretto and lungo have an official definition. Milk drinks vary per café, so they follow published ratios.</p></li>
+        <li><i class="ic" style="-webkit-mask-image:url(assets/icons/info-circle.svg);mask-image:url(assets/icons/info-circle.svg)" aria-hidden="true"></i><p>Cup clearance, tank size and hot-water function are not listed because they could not be confirmed. Check your manual.</p></li>
+        <li><i class="ic" style="-webkit-mask-image:url(assets/icons/cloud.svg);mask-image:url(assets/icons/cloud.svg)" aria-hidden="true"></i><p>Drawings are diagrams generated from each recipe’s amounts, not photos.</p></li>
+      </ul>
+    </section>
+
+    <section class="about__sec">
+      <h2>Sources</h2>
+      <ul class="links" id="sources"></ul>
+    </section>
+
+    <section class="about__sec">
+      <h2>Credits</h2>
+      <ul class="links" id="credits"></ul>
+    </section>
+  </main>
+  <script type="module" src="js/about.js"></script>
+</body>
+</html>

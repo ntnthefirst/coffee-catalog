@@ -1,0 +1,107 @@
+@use "../abstracts" as *;
+
+// ---------- About page ----------
+.about {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 22px 18px 80px;
+  animation: rise .5s $ease both;
+
+  &__back { position: sticky; top: 14px; z-index: 5; }
+
+  &__hero {
+    display: grid;
+    gap: 12px;
+    padding: 30px 0 18px;
+
+    h1 { font-size: 48px; }
+    p { max-width: 34em; color: var(--ink-2); font-size: 18px; line-height: 1.5; }
+  }
+  &__logo {
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 20px;
+    background: var(--purple);
+    color: var(--white);
+    font-size: 30px;
+    animation: pop .8s $spring .2s both;
+  }
+
+  &__sec {
+    display: grid;
+    gap: 6px;
+    padding: 28px 0 6px;
+    animation: rise .55s $ease both;
+    &:nth-of-type(2) { animation-delay: .06s; }
+    &:nth-of-type(3) { animation-delay: .12s; }
+    &:nth-of-type(4) { animation-delay: .18s; }
+
+    h2 { font-size: 26px; margin-bottom: 6px; }
+  }
+}
+
+// key / value rows
+.kv {
+  margin: 0;
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    transition: padding .3s $ease;
+    &:hover { padding-left: 8px; }
+  }
+  dt { color: var(--ink-2); }
+  dd { margin: 0; font-weight: 600; text-align: right; }
+}
+
+.notes {
+  display: grid;
+  gap: 14px;
+
+  li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    p { padding-top: 6px; line-height: 1.45; }
+  }
+  .ic {
+    display: grid;
+    place-items: center;
+    flex: none;
+    box-sizing: content-box;
+    width: 22px;
+    height: 22px;
+    padding: 8px;
+    border-radius: 14px;
+    background: var(--purple-t);
+    color: var(--purple);
+  }
+  li:nth-child(3n+2) .ic { background: var(--pink-t); color: var(--crimson); }
+  li:nth-child(3n) .ic { background: var(--fill); color: var(--ink); }
+}
+
+.links {
+  display: grid;
+
+  li { border-bottom: 1px solid var(--line); }
+}
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  text-decoration: none;
+  transition: padding .3s $ease, color .2s;
+
+  span { display: grid; gap: 2px; min-width: 0; }
+  b { font-weight: 600; }
+  small { color: var(--ink-3); font-size: 13.5px; line-height: 1.35; }
+  .ic { color: var(--ink-3); transition: transform .35s $spring, color .2s; }
+  &:hover { color: var(--purple); padding-left: 8px; .ic { color: var(--purple); transform: translate(2px, -2px); } }
+}
