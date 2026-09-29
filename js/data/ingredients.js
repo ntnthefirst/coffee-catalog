@@ -1,0 +1,92 @@
+/* Ingredient types, syrups, milks and toppings. Colours drive the cup illustration. */
+
+export const types = {
+  espresso:  { label: "Espresso",          color: "#3a2012", liquid: true },
+  water:     { label: "Water",             color: "#e9dcc6", liquid: true },
+  milk:      { label: "Milk",              color: "#f2e4cb", liquid: true },
+  foam:      { label: "Milk foam",         color: "#fbf3e3", liquid: true },
+  coldfoam:  { label: "Cold foam",         color: "#fdf7ea", liquid: true },
+  cremafoam: { label: "Espresso foam",     color: "#c58f55", liquid: true },
+  syrup:     { label: "Syrup",             color: "#d9a95a", liquid: true },
+  sauce:     { label: "Sauce",             color: "#4a2618", liquid: true },
+  condensed: { label: "Condensed milk",    color: "#eed9a4", liquid: true },
+  chai:      { label: "Chai concentrate",  color: "#a4672f", liquid: true },
+  tonic:     { label: "Tonic water",       color: "#e3eee9", liquid: true },
+  oj:        { label: "Orange juice",      color: "#f3a53b", liquid: true },
+  lemonade:  { label: "Lemonade",          color: "#f4e58a", liquid: true },
+  lime:      { label: "Lime juice",        color: "#dfe9a0", liquid: true },
+  soda:      { label: "Sparkling water",   color: "#dcebf0", liquid: true },
+  icecream:  { label: "Vanilla ice cream", color: "#f8ecd0", liquid: false },
+  ice:       { label: "Ice",               color: "#dff1ff", liquid: false },
+};
+
+
+/* Flavouring syrups & sauces (Monin-style, any brand works). `homemade` = no standard bottle exists. */
+export const syrups = [
+  { id: "vanilla",           label: "Vanilla",            color: "#e8c27a", kind: "syrup", group: "Sweet & creamy" },
+  { id: "caramel",           label: "Caramel",            color: "#b9722c", kind: "syrup", group: "Sweet & creamy" },
+  { id: "salted-caramel",    label: "Salted caramel",     color: "#c0812f", kind: "syrup", group: "Sweet & creamy" },
+  { id: "hazelnut",          label: "Hazelnut",           color: "#a86b3c", kind: "syrup", group: "Nutty" },
+  { id: "pistachio",         label: "Pistachio",          color: "#a9c283", kind: "syrup", group: "Nutty" },
+  { id: "coconut",           label: "Coconut",            color: "#f1e6d2", kind: "syrup", group: "Nutty" },
+  { id: "amaretto",          label: "Amaretto (alcohol-free)", color: "#c7894a", kind: "syrup", group: "Nutty" },
+  { id: "irish-cream",       label: "Irish cream (alcohol-free)", color: "#c9a27a", kind: "syrup", group: "Sweet & creamy" },
+  { id: "brown-sugar",       label: "Brown sugar",        color: "#8d5a30", kind: "syrup", group: "Sweet & creamy" },
+  { id: "maple",             label: "Maple",              color: "#b8681e", kind: "syrup", group: "Sweet & creamy" },
+  { id: "honey",             label: "Honey",              color: "#e5a72e", kind: "syrup", group: "Sweet & creamy" },
+  { id: "toasted-marshmallow", label: "Toasted marshmallow", color: "#e6c9a0", kind: "syrup", group: "Sweet & creamy" },
+  { id: "cinnamon",          label: "Cinnamon",           color: "#b0471f", kind: "syrup", group: "Spiced", spicy: true },
+  { id: "gingerbread",       label: "Gingerbread",        color: "#9a5a2a", kind: "syrup", group: "Spiced", spicy: true },
+  { id: "pumpkin",           label: "Pumpkin spice",      color: "#d9822b", kind: "syrup", group: "Spiced", spicy: true },
+  { id: "cardamom",          label: "Cardamom (homemade)", color: "#c9a85f", kind: "syrup", group: "Spiced", spicy: true, homemade: true },
+  { id: "chili-honey",       label: "Chili honey (homemade)", color: "#d6521f", kind: "syrup", group: "Spiced", spicy: true, homemade: true },
+  { id: "lavender",          label: "Lavender",           color: "#a58fc4", kind: "syrup", group: "Floral & fresh" },
+  { id: "peppermint",        label: "Peppermint",         color: "#bfe3d0", kind: "syrup", group: "Floral & fresh" },
+  { id: "mint",              label: "Mint / mojito",      color: "#9fd6a5", kind: "syrup", group: "Floral & fresh" },
+  { id: "sugar",             label: "Simple (sugar) syrup", color: "#f2e6cc", kind: "syrup", group: "Basics" },
+  { id: "chocolate",         label: "Chocolate sauce",    color: "#4a2618", kind: "sauce", group: "Sauces" },
+  { id: "white-chocolate",   label: "White chocolate sauce", color: "#eedfba", kind: "sauce", group: "Sauces" },
+  { id: "caramel-sauce",     label: "Caramel sauce",      color: "#a8621f", kind: "sauce", group: "Sauces" },
+  { id: "condensed",         label: "Sweetened condensed milk", color: "#eed9a4", kind: "sauce", group: "Sauces" },
+];
+
+
+/* Milks & alternatives. `foam` = how well it foams (1-5). */
+export const milks = [
+  { id: "whole", icon: "milk",    label: "Whole milk",       short: "Whole",    dairy: true,  color: "#f2e4cb", foam: 5,
+    note: "The reference milk. Sweet, creamy and the easiest to turn into silky microfoam.",
+    steam: "Steam to 60–65 °C. Stretch for 3–5 s for a latte, 8–10 s for a cappuccino." },
+  { id: "semi", icon: "milk",     label: "Semi-skimmed",     short: "Semi",     dairy: true,  color: "#f3e7d2", foam: 4,
+    note: "Lighter body, still foams well. Slightly less sweet than whole.",
+    steam: "Same technique as whole milk; foam is a little airier and drier." },
+  { id: "skim", icon: "milk",     label: "Skimmed milk",     short: "Skim",     dairy: true,  color: "#f5ecda", foam: 4,
+    note: "Makes big, stiff foam quickly but tastes thinner and the foam is less glossy.",
+    steam: "Stretch for less time — it over-aerates fast. Stop at 60 °C." },
+  { id: "lactosefree", icon: "milk", label: "Lactose-free",  short: "Lactose-free", dairy: true, color: "#f2e4cb", foam: 5,
+    note: "Naturally sweeter (lactose is pre-split). Behaves like whole/semi milk.",
+    steam: "Steam like normal milk, but it browns/scalds sooner — stop at 60 °C." },
+  { id: "oat", icon: "wheat",      label: "Oat (barista)",    short: "Oat",      dairy: false, color: "#eddcb8", foam: 4,
+    note: "Best all-round plant milk: creamy, naturally sweet, good microfoam. Use a “barista” edition.",
+    steam: "Steam to 55–60 °C only; it thickens and goes gluey if overheated. Short stretch (2–3 s)." },
+  { id: "soy", icon: "leaf",      label: "Soy (barista)",    short: "Soy",      dairy: false, color: "#f0e2bf", foam: 4,
+    note: "High protein, foams well. Can curdle in very hot, acidic coffee.",
+    steam: "Keep it at 55–60 °C. Pour the milk into the cup first, or let the espresso cool a few seconds, to avoid splitting." },
+  { id: "almond", icon: "nut",   label: "Almond",           short: "Almond",   dairy: false, color: "#efe0c5", foam: 2,
+    note: "Nutty and light, but thin — foam is bubbly and collapses quickly.",
+    steam: "Steam gently to 55 °C, minimal air (1–2 s), and pour right away. Barista editions help a lot." },
+  { id: "coconut", icon: "cookie",  label: "Coconut",          short: "Coconut",  dairy: false, color: "#f7f0e4", foam: 2,
+    note: "Tropical flavour, thin foam. Wonderful with vanilla or coconut syrup.",
+    steam: "Steam to 55 °C with very little air. Pick a barista/“for coffee” coconut drink, not the canned kind." },
+];
+
+
+export const toppings = [
+  { id: "whipped",   label: "Whipped cream",     color: "#fffaf0" },
+  { id: "cocoa",     label: "Cocoa dust",        color: "#5a3420" },
+  { id: "cinnamon",  label: "Cinnamon",          color: "#a4531f", spicy: true },
+  { id: "cayenne",   label: "Pinch of cayenne",  color: "#c8321d", spicy: true },
+  { id: "caramel",   label: "Caramel drizzle",   color: "#b9722c" },
+  { id: "chocolate", label: "Chocolate drizzle", color: "#3a1c10" },
+  { id: "seasalt",   label: "Sea salt flakes",   color: "#ffffff" },
+];
+

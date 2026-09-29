@@ -2,6 +2,7 @@
   "name": "dedica-coffee-catalog",
   "version": "2.0.0",
   "private": true,
+  "type": "module",
   "description": "Coffee catalog for the De'Longhi Dedica Arte. Static site, styles written in SCSS.",
   "scripts": {
     "build": "sass --no-source-map --style=compressed scss/main.scss css/main.css",
