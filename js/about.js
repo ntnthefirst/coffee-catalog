@@ -2,6 +2,7 @@
 import { esc } from "./core/dom.js";
 import { icon } from "./render/icons.js";
 import { machine, standards, sources, credits } from "./data/about.js";
+import { recipes } from "./data/recipes.js";
 
 const kv = (rows) => rows.map(([k, v]) => `<div class="kv__row"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("");
 const links = (items) => items.map((s) =>
@@ -12,3 +13,4 @@ document.getElementById("machine").innerHTML = kv(machine.specs);
 document.getElementById("numbers").innerHTML = kv(standards);
 document.getElementById("sources").innerHTML = links(sources);
 document.getElementById("credits").innerHTML = links(credits);
+document.getElementById("recipe-count").textContent = recipes.length;

@@ -1,6 +1,6 @@
 # Dedica Coffee
 
-A minimal coffee app for the **De'Longhi Dedica Arte**: 57 hot and iced recipes with real
+A minimal coffee app for the **De'Longhi Dedica Arte**: 100 hot and iced recipes with real
 measurements, a strength ranking, a build-your-own customiser and two illustrated
 guides (steam milk, pull a shot).
 
@@ -14,7 +14,7 @@ third-party requests: fonts and icons are served from `assets/`.
 | **Coffee** | Search, icon filters (hot, iced, classics, black, milk, flavour, spicy, dessert, saved) and a sort menu. Every drink is drawn from its own recipe. |
 | **Recipe sheet** | Ingredients as a colour bar and list, short steps for the Dedica, milk swatches (whole, oat, soy, almond ...), decaf toggle, share link. |
 | **Strongest** | Ranked by intensity (mg per 100 ml), total caffeine, or gentlest first. |
-| **Build** | Live cup, bar sliders for cold splash / steamed milk / foam / water, swatches for milk, flavour and toppings, shots, ice, layered or mixed. The drink gets a name, and the URL holds your recipe so you can share it. |
+| **Build** | Live cup, bar sliders for cold splash / steamed milk / foam / water, swatches for milk, flavour and toppings, shots, ice, layered or mixed. Everything shares one cup budget (300 ml of milk leaves no room for water), and every combination gets a real drink name (cortado, flat white, mocha, breve ...). The URL holds your recipe so you can share it. |
 | **Tips** | Swipeable steps with animated illustrations. Shots: **8 g** single, **15 g** double in the double-wall baskets. |
 | **About** | A separate page (`about.html`) with machine facts, the official numbers, sources and credits. |
 
@@ -27,6 +27,7 @@ Modules need a web server (opening `index.html` from disk will not work):
 ```bash
 npm install          # only needed to change the styles
 npm run serve        # python3 -m http.server 8000  ->  http://localhost:8000
+npm test             # checks ~26,000 customiser combinations (cup budget, names, drawing)
 ```
 
 ## Change the styles
