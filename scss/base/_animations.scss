@@ -26,3 +26,6 @@
 @keyframes fade-out    { from { opacity: 1; } to { opacity: 0; } }
 @keyframes menu-in     { from { opacity: 0; transform: scale(.9) translateY(-6px); } to { opacity: 1; transform: none; } }
 @keyframes toast-in    { from { opacity: 0; transform: translate(-50%, 20px) scale(.92); } to { opacity: 1; transform: translate(-50%, 0); } }
+
+// bars that grow to a width given by --w (0..1)
+@keyframes fill-x { from { transform: scaleX(0); } to { transform: scaleX(var(--w, 1)); } }

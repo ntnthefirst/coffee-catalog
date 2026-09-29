@@ -43,3 +43,8 @@
   &.is-on { color: var(--crimson); .ic { animation: pop .5s $spring; } }
   &.is-flash { animation: pop .45s $spring; }
 }
+
+// toggle icon button with its own colour (--c)
+.iconbtn--tog {
+  &.is-on { background: var(--c); color: var(--white); }
+}
