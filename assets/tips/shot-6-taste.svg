@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" fill="none" stroke-linejoin="round" stroke-linecap="round"><style>
+.heat{fill:none;stroke:#96031A;stroke-opacity:.55;stroke-width:4;stroke-linecap:round;animation:up 2.2s ease-in infinite;opacity:0}
+.heat.b{animation-delay:.5s}.heat.c{animation-delay:1s}
+.steam{fill:none;stroke:#1B1B1E;stroke-opacity:.28;stroke-width:4;stroke-linecap:round;animation:up 2.4s ease-in infinite;opacity:0}
+@keyframes up{0%{opacity:0;transform:translateY(10px)}35%{opacity:1}100%{opacity:0;transform:translateY(-16px)}}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.12)}}
+.press{animation:press 1.8s ease-in-out infinite}
+@keyframes press{0%,100%{transform:translateY(-14px)}50%{transform:translateY(8px)}}
+.flow{stroke-dasharray:8 7;animation:flow .7s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-15}}
+.knob{animation:knob 3.6s ease-in-out infinite}
+@keyframes knob{0%,100%{transform:translateX(-70px)}50%{transform:translateX(70px)}}
+.grow{transform-box:fill-box;transform-origin:bottom;animation:grow 2.4s ease-in-out infinite}
+@keyframes grow{0%,100%{transform:scaleY(.9)}50%{transform:scaleY(1)}}
+</style>
+<defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#F786AA"/><stop offset=".5" stop-color="#FBFFFE"/><stop offset="1" stop-color="#96031A"/></linearGradient></defs>
+<rect x="30" y="92" width="260" height="34" rx="17" fill="url(#g)" stroke="#1B1B1E" stroke-width="4"/>
+<circle cx="160" cy="109" r="9" fill="#623CEA" opacity=".25" class="pulse"/>
+<g transform="translate(160 109)"><g class="knob"><circle r="19" fill="#623CEA" stroke="#1B1B1E" stroke-width="4"/><path d="M-6 0L-1 5L7 -4" stroke="#FBFFFE" stroke-width="3.5"/></g></g>
+<text x="30" y="70" font-family="Arial,sans-serif" font-weight="700" font-size="20" fill="#F786AA">SOUR</text><text x="290" y="70" text-anchor="end" font-family="Arial,sans-serif" font-weight="700" font-size="20" fill="#96031A">BITTER</text><text x="160" y="70" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="20" fill="#623CEA">SWEET</text>
+<path d="M40 160H120M100 148L120 160L100 172" stroke="#1B1B1E" stroke-width="4" transform="rotate(180 80 160)"/><path d="M200 160H280M260 148L280 160L260 172" stroke="#1B1B1E" stroke-width="4"/>
+<text x="80" y="198" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="17" fill="#1B1B1E">finer</text><text x="240" y="198" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="17" fill="#1B1B1E">coarser</text>
+</svg>

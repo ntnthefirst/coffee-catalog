@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" fill="none" stroke-linejoin="round" stroke-linecap="round"><style>
+.steam{fill:none;stroke:#1B1B1E;stroke-opacity:.28;stroke-width:4;stroke-linecap:round;animation:up 2.4s ease-in infinite;opacity:0}
+.steam.b{animation-delay:.6s}.steam.c{animation-delay:1.2s}
+@keyframes up{0%{opacity:0;transform:translateY(10px)}35%{opacity:1}100%{opacity:0;transform:translateY(-16px)}}
+.bub{fill:#FBFFFE;stroke:#1B1B1E;stroke-opacity:.35;stroke-width:2;animation:rise 2s ease-in infinite;opacity:0}
+.bub.b{animation-delay:.5s}.bub.c{animation-delay:1s}.bub.d{animation-delay:1.5s}
+@keyframes rise{0%{opacity:0;transform:translateY(12px)}30%{opacity:1}100%{opacity:0;transform:translateY(-22px)}}
+.spin{transform-origin:160px 150px;animation:spin 3s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.08)}}
+.bob{animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(8px)}}
+.flow{stroke-dasharray:10 8;animation:flow .8s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-18}}
+.tilt{transform-origin:160px 150px;animation:tilt 3s ease-in-out infinite}
+@keyframes tilt{50%{transform:rotate(-6deg)}}
+</style><defs><clipPath id="p"><path d="M108 96H212L202 196Q160 208 118 196Z"/></clipPath></defs>
+<ellipse cx="160" cy="214" rx="90" ry="8" fill="#1B1B1E" opacity=".08"/>
+<path d="M108 96H212L202 196Q160 208 118 196Z" fill="#C9CDD6"/><path d="M108 96L94 82L122 96Z" fill="#C9CDD6"/><g clip-path="url(#p)"><rect x="100" y="132" width="130" height="90" fill="#FBFFFE"/>
+<circle class="bub" cx="130" cy="150" r="5"/><circle class="bub b" cx="146" cy="160" r="4"/><circle class="bub c" cx="122" cy="172" r="4"/><circle class="bub d" cx="140" cy="140" r="3"/></g>
+<path d="M110 130Q126 122 142 130T174 130T206 130" stroke="#F786AA" stroke-width="5"/>
+<path d="M108 96H212L202 196Q160 208 118 196Z" stroke="#1B1B1E" stroke-width="4" fill="none"/><path d="M108 96L94 82L122 96Z" stroke="#1B1B1E" stroke-width="4" fill="none"/><path d="M210 112Q252 114 244 152Q240 178 206 178" stroke="#1B1B1E" stroke-width="6"/>
+<path d="M228 0V60Q228 76 214 84L150 130" stroke="#1B1B1E" stroke-width="16"/><path d="M228 0V60Q228 76 214 84L150 130" stroke="#C9CDD6" stroke-width="8"/>
+<g stroke="#F786AA" stroke-width="4"><path class="pulse" d="M118 116L106 108"/><path class="pulse" d="M124 108L116 94" style="animation-delay:.2s"/><path class="pulse" d="M136 106L134 92" style="animation-delay:.4s"/></g>
+<g transform="translate(58 56)"><circle r="34" fill="#F786AA"/></g>
+<text x="58" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="14" fill="#1B1B1E">tss</text>
+<text x="58" y="72" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="16" fill="#1B1B1E">3–5 s</text>
+</svg>

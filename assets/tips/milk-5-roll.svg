@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" fill="none" stroke-linejoin="round" stroke-linecap="round"><style>
+.steam{fill:none;stroke:#1B1B1E;stroke-opacity:.28;stroke-width:4;stroke-linecap:round;animation:up 2.4s ease-in infinite;opacity:0}
+.steam.b{animation-delay:.6s}.steam.c{animation-delay:1.2s}
+@keyframes up{0%{opacity:0;transform:translateY(10px)}35%{opacity:1}100%{opacity:0;transform:translateY(-16px)}}
+.bub{fill:#FBFFFE;stroke:#1B1B1E;stroke-opacity:.35;stroke-width:2;animation:rise 2s ease-in infinite;opacity:0}
+.bub.b{animation-delay:.5s}.bub.c{animation-delay:1s}.bub.d{animation-delay:1.5s}
+@keyframes rise{0%{opacity:0;transform:translateY(12px)}30%{opacity:1}100%{opacity:0;transform:translateY(-22px)}}
+.spin{transform-origin:160px 150px;animation:spin 3s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.08)}}
+.bob{animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(8px)}}
+.flow{stroke-dasharray:10 8;animation:flow .8s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-18}}
+.tilt{transform-origin:160px 150px;animation:tilt 3s ease-in-out infinite}
+@keyframes tilt{50%{transform:rotate(-6deg)}}
+</style><defs><clipPath id="p"><path d="M108 96H212L202 196Q160 208 118 196Z"/></clipPath></defs>
+<ellipse cx="160" cy="214" rx="90" ry="8" fill="#1B1B1E" opacity=".08"/>
+<path d="M108 96H212L202 196Q160 208 118 196Z" fill="#C9CDD6"/><path d="M108 96L94 82L122 96Z" fill="#C9CDD6"/><g clip-path="url(#p)"><rect x="100" y="120" width="130" height="100" fill="#FBFFFE"/></g>
+<g clip-path="url(#p)"><g class="spin"><path d="M160 150m-30 0a30 22 0 1 1 60 0" stroke="#623CEA" stroke-width="5"/><path d="M190 150l-8 -10M190 150l10 -8" stroke="#623CEA" stroke-width="5"/></g></g>
+<path d="M108 96H212L202 196Q160 208 118 196Z" stroke="#1B1B1E" stroke-width="4" fill="none"/><path d="M108 96L94 82L122 96Z" stroke="#1B1B1E" stroke-width="4" fill="none"/><path d="M210 112Q252 114 244 152Q240 178 206 178" stroke="#1B1B1E" stroke-width="6"/>
+<path d="M228 0V60Q228 76 214 84L166 170" stroke="#1B1B1E" stroke-width="16"/><path d="M228 0V60Q228 76 214 84L166 170" stroke="#C9CDD6" stroke-width="8"/>
+<g transform="translate(276 120)"><rect x="-9" y="-70" width="18" height="120" rx="9" fill="#FBFFFE" stroke="#1B1B1E" stroke-width="4"/><rect x="-9" y="-42" width="18" height="26" fill="#F786AA" opacity=".9"/><circle cy="60" r="16" fill="#96031A" stroke="#1B1B1E" stroke-width="4"/><rect class="bob" x="-4" y="-16" width="8" height="70" rx="4" fill="#96031A"/></g>
+<text x="276" y="30" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="13" fill="#96031A">60–65°</text>
+</svg>

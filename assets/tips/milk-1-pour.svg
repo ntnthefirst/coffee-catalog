@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" fill="none" stroke-linejoin="round" stroke-linecap="round"><style>
+.steam{fill:none;stroke:#1B1B1E;stroke-opacity:.28;stroke-width:4;stroke-linecap:round;animation:up 2.4s ease-in infinite;opacity:0}
+.steam.b{animation-delay:.6s}.steam.c{animation-delay:1.2s}
+@keyframes up{0%{opacity:0;transform:translateY(10px)}35%{opacity:1}100%{opacity:0;transform:translateY(-16px)}}
+.bub{fill:#FBFFFE;stroke:#1B1B1E;stroke-opacity:.35;stroke-width:2;animation:rise 2s ease-in infinite;opacity:0}
+.bub.b{animation-delay:.5s}.bub.c{animation-delay:1s}.bub.d{animation-delay:1.5s}
+@keyframes rise{0%{opacity:0;transform:translateY(12px)}30%{opacity:1}100%{opacity:0;transform:translateY(-22px)}}
+.spin{transform-origin:160px 150px;animation:spin 3s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.08)}}
+.bob{animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(8px)}}
+.flow{stroke-dasharray:10 8;animation:flow .8s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-18}}
+.tilt{transform-origin:160px 150px;animation:tilt 3s ease-in-out infinite}
+@keyframes tilt{50%{transform:rotate(-6deg)}}
+</style><defs><clipPath id="p"><path d="M108 96H212L202 196Q160 208 118 196Z"/></clipPath></defs>
+<ellipse cx="160" cy="214" rx="90" ry="8" fill="#1B1B1E" opacity=".08"/>
+<path d="M108 96H212L202 196Q160 208 118 196Z" fill="#C9CDD6"/><path d="M108 96L94 82L122 96Z" fill="#C9CDD6"/><g clip-path="url(#p)"><rect x="100" y="150" width="130" height="70" fill="#FBFFFE"/><path d="M100 150H230" stroke="#623CEA" stroke-width="3" stroke-dasharray="6 6"/></g>
+<path d="M108 96H212L202 196Q160 208 118 196Z" stroke="#1B1B1E" stroke-width="4" fill="none"/><path d="M108 96L94 82L122 96Z" stroke="#1B1B1E" stroke-width="4" fill="none"/><path d="M210 112Q252 114 244 152Q240 178 206 178" stroke="#1B1B1E" stroke-width="6"/>
+<g class="tilt" style="transform-origin:96px 40px"><g transform="rotate(-38 70 50)"><rect x="34" y="14" width="64" height="86" rx="8" fill="#623CEA"/><path d="M34 34H98" stroke="#FBFFFE" stroke-width="3" opacity=".5"/><rect x="50" y="52" width="32" height="30" rx="6" fill="#FBFFFE"/><path d="M60 -2H88L98 14H34Z" fill="#F786AA" stroke="#1B1B1E" stroke-width="3"/></g></g>
+<path class="flow" d="M116 76Q128 96 140 126" stroke="#FBFFFE" stroke-width="7"/><path d="M116 76Q128 96 140 126" stroke="#1B1B1E" stroke-opacity=".25" stroke-width="2" fill="none"/>
+<g transform="translate(262 42)"><circle r="26" fill="#623CEA"/><g stroke="#FBFFFE" stroke-width="3.5"><path d="M0 -14V14M-12 -7L12 7M-12 7L12 -7"/></g></g>
+<text x="52" y="178" font-family="Arial,sans-serif" font-weight="700" font-size="20" fill="#623CEA">1/3</text>
+</svg>

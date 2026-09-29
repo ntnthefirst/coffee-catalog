@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" fill="none" stroke-linejoin="round" stroke-linecap="round"><style>
+.heat{fill:none;stroke:#96031A;stroke-opacity:.55;stroke-width:4;stroke-linecap:round;animation:up 2.2s ease-in infinite;opacity:0}
+.heat.b{animation-delay:.5s}.heat.c{animation-delay:1s}
+.steam{fill:none;stroke:#1B1B1E;stroke-opacity:.28;stroke-width:4;stroke-linecap:round;animation:up 2.4s ease-in infinite;opacity:0}
+@keyframes up{0%{opacity:0;transform:translateY(10px)}35%{opacity:1}100%{opacity:0;transform:translateY(-16px)}}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.12)}}
+.press{animation:press 1.8s ease-in-out infinite}
+@keyframes press{0%,100%{transform:translateY(-14px)}50%{transform:translateY(8px)}}
+.flow{stroke-dasharray:8 7;animation:flow .7s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-15}}
+.knob{animation:knob 3.6s ease-in-out infinite}
+@keyframes knob{0%,100%{transform:translateX(-70px)}50%{transform:translateX(70px)}}
+.grow{transform-box:fill-box;transform-origin:bottom;animation:grow 2.4s ease-in-out infinite}
+@keyframes grow{0%,100%{transform:scaleY(.9)}50%{transform:scaleY(1)}}
+</style>
+<ellipse cx="140" cy="226" rx="90" ry="7" fill="#1B1B1E" opacity=".08"/>
+<rect x="60" y="8" width="160" height="56" rx="18" fill="#1B1B1E"/><rect x="92" y="60" width="96" height="16" rx="6" fill="#C9CDD6" stroke="#1B1B1E" stroke-width="4"/>
+<path d="M96 78H184L176 104Q140 112 104 104Z" fill="#C9CDD6" stroke="#1B1B1E" stroke-width="4"/><path d="M184 88H244Q262 88 262 100Q262 112 244 112H180" fill="#623CEA" stroke="#1B1B1E" stroke-width="4"/>
+<path class="flow" d="M140 108V168" stroke="#6B3F26" stroke-width="6"/>
+<path d="M104 160H176L168 214Q140 222 112 214Z" fill="#FBFFFE" stroke="#1B1B1E" stroke-width="4"/><path d="M110 196H170L168 212Q140 218 112 212Z" fill="#6B3F26"/>
+<g transform="translate(266 168)"><rect x="-38" y="-46" width="76" height="92" rx="20" fill="#1B1B1E"/><circle cx="0" cy="-18" r="14" fill="#623CEA" opacity=".55"/><circle class="pulse" cx="0" cy="18" r="14" fill="#F786AA"/><text y="-13" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="14" fill="#FBFFFE">1</text><text y="23" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="14" fill="#1B1B1E">2</text></g>
+</svg>

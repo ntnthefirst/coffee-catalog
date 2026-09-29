@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" fill="none" stroke-linejoin="round" stroke-linecap="round"><style>
+.heat{fill:none;stroke:#96031A;stroke-opacity:.55;stroke-width:4;stroke-linecap:round;animation:up 2.2s ease-in infinite;opacity:0}
+.heat.b{animation-delay:.5s}.heat.c{animation-delay:1s}
+.steam{fill:none;stroke:#1B1B1E;stroke-opacity:.28;stroke-width:4;stroke-linecap:round;animation:up 2.4s ease-in infinite;opacity:0}
+@keyframes up{0%{opacity:0;transform:translateY(10px)}35%{opacity:1}100%{opacity:0;transform:translateY(-16px)}}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.12)}}
+.press{animation:press 1.8s ease-in-out infinite}
+@keyframes press{0%,100%{transform:translateY(-14px)}50%{transform:translateY(8px)}}
+.flow{stroke-dasharray:8 7;animation:flow .7s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-15}}
+.knob{animation:knob 3.6s ease-in-out infinite}
+@keyframes knob{0%,100%{transform:translateX(-70px)}50%{transform:translateX(70px)}}
+.grow{transform-box:fill-box;transform-origin:bottom;animation:grow 2.4s ease-in-out infinite}
+@keyframes grow{0%,100%{transform:scaleY(.9)}50%{transform:scaleY(1)}}
+</style>
+<ellipse cx="160" cy="224" rx="120" ry="8" fill="#1B1B1E" opacity=".08"/>
+<rect x="50" y="140" width="220" height="80" rx="20" fill="#1B1B1E"/><rect x="80" y="166" width="60" height="10" rx="5" fill="#F786AA"/><circle cx="232" cy="172" r="12" fill="#623CEA"/>
+<rect x="62" y="126" width="196" height="20" rx="10" fill="#C9CDD6" stroke="#1B1B1E" stroke-width="4"/><path d="M84 136H236" stroke="#1B1B1E" stroke-width="3" stroke-dasharray="10 8" opacity=".35"/>
+<g stroke="#1B1B1E" stroke-width="4" fill="#FBFFFE"><path d="M92 90H150L144 126H98Z"/><path d="M150 100Q168 100 164 114Q162 122 146 120" fill="none"/><path d="M178 90H236L230 126H184Z"/><path d="M236 100Q254 100 250 114Q248 122 232 120" fill="none"/></g>
+<path class="heat" d="M110 78c-6-8 6-14 0-22"/><path class="heat b" d="M126 78c-6-8 6-14 0-22"/><path class="heat" d="M196 78c-6-8 6-14 0-22"/><path class="heat c" d="M212 78c-6-8 6-14 0-22"/>
+<g transform="translate(46 50)"><circle r="28" fill="#96031A"/><path d="M0 -14C10 -4 12 4 8 10C6 14 -6 14 -8 10C-12 4 -6 -2 0 -14Z" fill="#FBFFFE"/></g>
+</svg>
