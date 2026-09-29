@@ -1,0 +1,36 @@
+@use "../abstracts" as *;
+
+// The whole UI is built from five colours.
+:root {
+  --white:   #FBFFFE; // White
+  --ink:     #1B1B1E; // Carbon Black
+  --purple:  #623CEA; // Majorelle Blue
+  --pink:    #F786AA; // Bubblegum Tint
+  --crimson: #96031A; // Deep Crimson
+
+  // neutrals derived from ink + white
+  --ink-2:  #{tint(var(--ink), 62%)};
+  --ink-3:  #{tint(var(--ink), 40%)};
+  --line:   #{tint(var(--ink), 9%)};
+  --fill:   #{tint(var(--ink), 5%)};
+  --fill-2: #{tint(var(--ink), 10%)};
+
+  // soft tints used for backgrounds
+  --purple-t:   #{tint(var(--purple), 11%)};
+  --purple-t2:  #{tint(var(--purple), 22%)};
+  --pink-t:     #{tint(var(--pink), 20%)};
+  --pink-t2:    #{tint(var(--pink), 38%)};
+  --crimson-t:  #{tint(var(--crimson), 9%)};
+  --crimson-t2: #{tint(var(--crimson), 18%)};
+
+  // cup illustration
+  --glass-line: rgba(27, 27, 30, .34);
+  --glass-fill: rgba(255, 255, 255, .55);
+  --glass-in:   rgba(255, 255, 255, .9);
+  --steam:      rgba(27, 27, 30, .22);
+
+  --font-ui:      "Outfit", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Fredoka", "Outfit", system-ui, sans-serif;
+
+  color-scheme: light;
+}

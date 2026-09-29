@@ -1,0 +1,12 @@
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -.01em;
+  line-height: 1.1;
+}
+
+// numbers use the display face with equal-width digits so they don't jiggle
+.num {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+}
