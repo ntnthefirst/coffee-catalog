@@ -1,0 +1,132 @@
+@use "../abstracts" as *;
+
+// ---------- recipe detail sheet ----------
+.dt-hero {
+  display: grid;
+  place-items: center;
+  height: 310px;
+  padding: 56px 40px 22px;
+  background: var(--tone);
+
+  .cup { height: 100%; width: auto; filter: drop-shadow(0 14px 14px rgba(27, 27, 30, .1)); }
+}
+
+.dt-body { display: grid; gap: 26px; padding: 24px 20px 30px; }
+.dt-title { font-size: 34px; }
+.dt-sub { margin-top: 8px; color: var(--ink-2); font-size: 16.5px; }
+
+.dt-h {
+  margin-bottom: 12px;
+  color: var(--ink-3);
+  font-family: var(--font-ui);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.dt-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+
+.stat {
+  display: grid;
+  align-content: start;
+  gap: 4px;
+  padding: 14px 14px 12px;
+  border-radius: 20px;
+  background: var(--t);
+  color: var(--c);
+  animation: rise .5s $ease both;
+
+  &:nth-child(2) { animation-delay: 60ms; }
+  &:nth-child(3) { animation-delay: 120ms; }
+  .ic { font-size: 22px; }
+  b { color: var(--ink); font-size: 28px; line-height: 1; font-weight: 600; }
+  small { color: var(--ink-2); font-size: 12.5px; font-weight: 500; line-height: 1.2; }
+  .strength { height: 28px; margin: 0; }
+}
+.strength--lg i { width: 6px; }
+
+.dt-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; justify-content: space-between; }
+.dt-note {
+  display: flex;
+  gap: 10px;
+  margin-top: -12px;
+  color: var(--ink-2);
+  font-size: 14px;
+  .ic { color: var(--purple); margin-top: 2px; }
+}
+
+.pill-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 18px 0 14px;
+  border-radius: 16px;
+  background: var(--fill);
+  color: var(--ink-2);
+  font-weight: 600;
+  @include pressable(.93);
+
+  .ic { font-size: 20px; }
+  &.is-on { background: var(--ink); color: var(--white); .ic { animation: pop .45s $spring; } }
+}
+
+// ingredients
+.ing {
+  margin-top: 14px;
+
+  li {
+    display: grid;
+    grid-template-columns: 14px 1fr auto;
+    gap: 12px;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    animation: rise .5s $ease both;
+    animation-delay: calc(var(--i) * 45ms);
+
+    &:last-child { border-bottom: 0; }
+  }
+
+  &__name small { margin-left: 8px; color: var(--ink-3); font-size: 13px; }
+  &__amt { font-size: 18px; }
+}
+.dot { width: 14px; height: 14px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(27, 27, 30, .12); }
+
+// steps
+.steps {
+  display: grid;
+  gap: 14px;
+
+  li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    animation: rise .5s $ease both;
+    animation-delay: calc(var(--i) * 55ms + 120ms);
+  }
+
+  &__ic {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 13px;
+    background: var(--purple-t);
+    color: var(--purple);
+    font-size: 20px;
+  }
+  &__txt { padding-top: 7px; line-height: 1.4; }
+}
+
+.dt-tip {
+  display: flex;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: var(--pink-t);
+  font-size: 15px;
+  .ic { flex: none; margin-top: 1px; font-size: 22px; color: var(--crimson); }
+}
