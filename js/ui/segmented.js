@@ -2,11 +2,11 @@
 import { esc } from "../core/dom.js";
 import { icon } from "../render/icons.js";
 
-/** options: [{ v, label?, icon?, color?, title? }] */
+/** options: [{ v, label?, icon?, html?, color?, title? }] */
 export function segHTML(name, options, extraClass = "") {
   const buttons = options.map((o) =>
     `<button type="button" class="seg__btn" data-seg="${name}" data-v="${o.v}" ${o.color ? `style="--c:${o.color}"` : ""} aria-pressed="false" ${o.title ? `title="${esc(o.title)}" aria-label="${esc(o.title)}"` : ""}>` +
-    `${o.icon ? icon(o.icon) : ""}${o.label ? `<span>${esc(o.label)}</span>` : ""}</button>`).join("");
+    `${o.html || ""}${o.icon ? icon(o.icon) : ""}${o.label ? `<span>${esc(o.label)}</span>` : ""}</button>`).join("");
   return `<div class="seg ${extraClass}" data-seg-group="${name}" style="--n:${options.length};--idx:0"><span class="seg__ind"></span>${buttons}</div>`;
 }
 

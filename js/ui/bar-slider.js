@@ -105,5 +105,6 @@ export function barSlider(cfg) {
     /** update from outside (presets, URL ...) without firing onChange */
     set(value, { animate = false } = {}) { setN(Math.round(value / step), { silent: true, animate }); },
     setColor(color) { root.style.setProperty("--c", color); },
+    setLabel(text) { root.querySelector(".bs__label").textContent = text; track.setAttribute("aria-label", text); },
   };
 }
