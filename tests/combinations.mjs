@@ -60,6 +60,20 @@ for (const temp of ["hot", "iced"])
                   }
                 }
 
+// every catalog recipe must load into the builder and stay a valid drink
+import { recipes } from "../js/data/recipes.js";
+import { builderFromRecipe } from "../js/logic/builder-model.js";
+for (const r of recipes) {
+  try {
+    const { b } = builderFromRecipe(r);
+    normalize(b);
+    const info = analyse(b);
+    if (!info.name || usedMl(b) > capacity(b) - fixedMl(b)) problems.push(`recipe ${r.id} does not load cleanly (${info.name})`);
+    if (r.id === "noisette" && b.cold !== 10 && b.cold !== 20) problems.push(`noisette splash not loaded (cold=${b.cold})`);
+  } catch (e) { problems.push(`recipe ${r.id} THROW ${e.message}`); }
+}
+console.log(`${recipes.length} catalog recipes load into the builder.`);
+
 const list = [...names.entries()].sort((a, b) => b[1] - a[1]);
 console.log(`${count} combinations checked, ${names.size} distinct drink names`);
 console.log("Most common:", list.slice(0, 14).map(([n, c]) => `${n} (${c})`).join(", "));

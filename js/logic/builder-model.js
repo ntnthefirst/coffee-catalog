@@ -126,7 +126,8 @@ export function builderFromRecipe(r) {
   b.shots = r.shots >= 1.5 ? 2 : 1;
   const per = sumType(r.ing, "espresso") / b.shots;
   b.style = per < CONSTS.shotMl * 0.85 ? "ristretto" : per > CONSTS.shotMl * 1.5 ? "lungo" : "normal";
-  b.milk = sumType(r.ing, "milk");
+  b.milk = r.ing.filter((i) => i.t === "milk" && !i.raw).reduce((n, i) => n + i.ml, 0);
+  b.cold = r.temp === "hot" ? r.ing.filter((i) => i.t === "milk" && i.raw).reduce((n, i) => n + i.ml, 0) : 0;
   b.foam = sumType(r.ing, "foam") + sumType(r.ing, "coldfoam");
   b.water = sumType(r.ing, "water");
   b.milkId = r.milk || "whole";
@@ -140,7 +141,7 @@ export function builderFromRecipe(r) {
     }
   });
   b.tops = r.ing.filter((i) => i.t === "top").map((i) => i.kind);
-  const dropped = r.ing.filter((i) => ["tonic", "oj", "lemonade", "lime", "soda", "chai", "cremafoam", "icecream"].includes(i.t));
+  const dropped = r.ing.filter((i) => ["tonic", "oj", "lemonade", "lime", "soda", "chai", "cremafoam", "icecream", "cream"].includes(i.t));
   return { b, dropped };
 }
 
