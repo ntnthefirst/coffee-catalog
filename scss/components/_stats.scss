@@ -29,3 +29,18 @@
   &--hot .ic { color: var(--crimson); }
   &--iced .ic { color: var(--purple); }
 }
+
+// stacked proportion bar under a cup
+.mixbar {
+  display: flex;
+  gap: 3px;
+  height: 10px;
+
+  i {
+    min-width: 5px;
+    border-radius: 99px;
+    transform-origin: left;
+    animation: grow-x .7s cubic-bezier(.2, .8, .2, 1) both;
+    animation-delay: calc(var(--i) * 80ms);
+  }
+}

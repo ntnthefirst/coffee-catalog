@@ -11,6 +11,7 @@
   .steam path { opacity: 0; animation: steam 3.4s ease-in-out infinite; }
 
   .ice rect {
+    transform: rotate(var(--r, 0deg));
     transform-box: fill-box;
     transform-origin: center;
     animation: bob 3.6s ease-in-out infinite;
