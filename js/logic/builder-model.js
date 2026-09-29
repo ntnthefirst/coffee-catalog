@@ -5,10 +5,12 @@ import { CONSTS } from "../data/config.js";
 import { clamp } from "../core/dom.js";
 import { MILK, SYRUP, TOPPING } from "./lookup.js";
 import { sumType, iceOf } from "./stats.js";
+import { nameDrink } from "./naming.js";
 
-export const ICE_LEVELS = { none: 0, light: 80, normal: 150, lots: 220 };
-export const SHOT_ML = { normal: CONSTS.shotMl, ristretto: 17, lungo: 45 };
-export const LIMITS = { cold: 150, milk: 300, foam: 150, water: 200 };
+import { BUILDER } from "../data/config.js";
+export const ICE_LEVELS = BUILDER.iceLevels;
+export const SHOT_ML = BUILDER.shotMl;
+export const LIMITS = BUILDER.limits;
 
 export function defaultBuilder() {
   return {
@@ -57,7 +59,6 @@ function profile(ing) {
   return p;
 }
 const PROFILES = Object.fromEntries(recipes.map((r) => [r.id, profile(r.ing)]));
-const isBase = (r) => r.ing.every((i) => ["espresso", "milk", "foam", "coldfoam", "water", "ice", "top", "garnish"].includes(i.t));
 
 function score(a, r, withFlavour) {
   const p = PROFILES[r.id];
@@ -72,28 +73,14 @@ function score(a, r, withFlavour) {
   return clamp(s, 0, 1);
 }
 
-/** -> { ing, name, ranked: [{r, s}] } */
+/** -> { ing, name, blurb, ranked: [{r, s}] } */
 export function analyse(b) {
   const ing = bIngredients(b);
   const a = profile(ing);
-  const iced = b.temp === "iced";
   const penalty = (r) => (r.temp === b.temp ? 0 : 0.25);
   const ranked = recipes.map((r) => ({ r, s: clamp(score(a, r, true) - penalty(r), 0, 1) })).sort((x, y) => y.s - x.s);
-  const bases = recipes.filter(isBase).map((r) => ({ r, s: clamp(score(a, r, false) - penalty(r), 0, 1) })).sort((x, y) => y.s - x.s);
-
-  const flavourNames = [...a.flav].filter((x) => x !== "chai").map((x) =>
-    SYRUP[x] ? SYRUP[x].label.replace(/\s*\(.*\)/, "").replace(/ sauce$/i, "").replace(/^Sweetened condensed milk$/i, "Condensed milk") : x);
-
-  const top = ranked[0];
-  const sameFlavours = top && [...a.flav].sort().join() === [...PROFILES[top.r.id].flav].sort().join();
-  let name;
-  if (top && top.s >= 0.86 && sameFlavours && top.r.temp === b.temp) name = top.r.name.replace(/ \(0 %\)/, "");
-  else if (bases[0] && bases[0].s >= 0.5) {
-    const base = bases[0].r.name.replace(/^Iced /, "").replace(/^Caffè /, "");
-    name = [iced ? "Iced" : "", flavourNames.join(" & "), base].filter(Boolean).join(" ");
-  } else name = [iced ? "Iced" : "", flavourNames.join(" & "), "Custom coffee"].filter(Boolean).join(" ");
-
-  return { ing, name, ranked: ranked.slice(0, 3) };
+  const { name, blurb } = nameDrink(b);
+  return { ing, name, blurb, ranked: ranked.slice(0, 3) };
 }
 
 /* ---------- URL sharing ---------- */
