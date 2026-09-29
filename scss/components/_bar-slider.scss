@@ -1,0 +1,83 @@
+@use "../abstracts" as *;
+
+// Bar slider: a row of coloured bars you drag left/right.
+// One bar = one step. Filled bars fade from light to full colour.
+.bs {
+  --c: var(--purple);
+  display: grid;
+  gap: 10px;
+
+  &__head { display: flex; align-items: center; gap: 10px; }
+
+  &__ic {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 12px;
+    background: tint(var(--c), 14%);
+    color: var(--c);
+    font-size: 19px;
+  }
+
+  &__label { font-weight: 600; }
+  &__val { margin-left: auto; font-size: 24px; line-height: 1; }
+  &__unit { margin-left: 3px; color: var(--ink-3); font-size: 13px; font-weight: 500; }
+
+  &__track {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 48px;
+    padding-top: 6px;
+    touch-action: pan-y;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 10px;
+  }
+
+  &__bar {
+    --k: 0;
+    --s: 1;
+    flex: 1;
+    min-width: 0;
+    height: calc(34% + 66% * var(--k));
+    border-radius: 5px;
+    background: var(--fill-2);
+    transform: scaleY(var(--s));
+    transform-origin: bottom;
+    transition: background-color .25s, transform .22s $spring;
+
+    &.on { background: color-mix(in srgb, var(--c) calc(40% + 60% * var(--k)), var(--white)); }
+  }
+
+  // wave when the value jumps (tap / keyboard / preset)
+  &.is-wave &__bar { animation: bump .5s ease both; animation-delay: calc(var(--i) * 14ms); }
+
+  // bubble that follows the finger
+  &__bubble {
+    position: absolute;
+    bottom: calc(100% - 4px);
+    left: var(--x, 0%);
+    padding: 3px 9px;
+    border-radius: 10px;
+    background: var(--ink);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 13px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, 6px) scale(.8);
+    transition: opacity .2s, transform .3s $spring;
+  }
+  &.is-active &__bubble { opacity: 1; transform: translate(-50%, 0) scale(1); }
+
+  &:focus-within &__track { outline: 3px solid color-mix(in srgb, var(--c) 40%, transparent); outline-offset: 3px; }
+  &__track:focus-visible { outline: 3px solid color-mix(in srgb, var(--c) 45%, transparent); outline-offset: 3px; }
+
+  // few big bars (pumps)
+  &--chunky &__track { gap: 8px; height: 56px; }
+  &--chunky &__bar { border-radius: 9px; }
+}

@@ -1,0 +1,55 @@
+@use "../abstracts" as *;
+
+// Horizontal strip of round icon filters.
+.strip {
+  display: flex;
+  gap: 4px;
+  margin: 0 -18px;
+  padding: 4px 18px 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+  &::-webkit-scrollbar { display: none; }
+
+  &__sep { flex: none; width: 1px; margin: 8px 8px 30px; background: var(--line); }
+}
+
+.fbtn {
+  --c: var(--purple);
+  flex: none;
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+  width: 70px;
+  color: var(--ink-2);
+  font-size: 11.5px;
+  font-weight: 500;
+  scroll-snap-align: start;
+
+  &__dot {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    border-radius: 21px;
+    background: tint(var(--c), 12%);
+    color: var(--c);
+    font-size: 25px;
+    transition: background-color .3s, color .3s, border-radius .45s $spring, transform .4s $spring;
+  }
+
+  &:hover &__dot { transform: translateY(-3px); }
+  &:active &__dot { transform: scale(.88); }
+
+  &.is-on {
+    color: var(--ink);
+    font-weight: 600;
+
+    .fbtn__dot { background: var(--c); color: var(--white); border-radius: 50%; }
+    .ic { animation: pop .5s $spring; }
+  }
+}
+
+@include up(md) {
+  .strip { margin: 0; padding: 4px 0 10px; }
+}

@@ -1,0 +1,26 @@
+@use "../abstracts" as *;
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(#{$tabbar-h} + 22px + env(safe-area-inset-bottom));
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: min(92vw, 420px);
+  padding: 12px 18px;
+  border-radius: 16px;
+  background: var(--ink);
+  color: var(--white);
+  font-weight: 500;
+  font-size: 14.5px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, 20px);
+  transition: opacity .25s, transform .35s $spring;
+
+  &.is-on { opacity: 1; transform: translate(-50%, 0); }
+  .ic { color: var(--pink); }
+  @include up(md) { bottom: 28px; }
+}

@@ -1,0 +1,31 @@
+// Five small bars that show how intense a drink is.
+.strength {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+
+  i {
+    width: 4px;
+    height: calc(30% + 14% * var(--n));
+    border-radius: 2px;
+    background: color-mix(in srgb, var(--ink) 14%, transparent);
+    transition: background-color .3s;
+
+    &.on { background: var(--purple); }
+  }
+}
+
+// icon + value pair (ml, mg ...)
+.meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--ink-2);
+  font-size: 13px;
+  font-weight: 500;
+
+  .ic { font-size: 15px; color: var(--ink-3); }
+  &--hot .ic { color: var(--crimson); }
+  &--iced .ic { color: var(--purple); }
+}

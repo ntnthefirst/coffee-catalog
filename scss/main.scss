@@ -7,3 +7,19 @@
 @use "base/reset";
 @use "base/typography";
 @use "base/animations";
+
+// layout
+@use "layout/shell";
+
+// components
+@use "components/icon";
+@use "components/button";
+@use "components/segmented";
+@use "components/filters";
+@use "components/bar-slider";
+@use "components/swatch";
+@use "components/sheet";
+@use "components/menu";
+@use "components/toast";
+@use "components/cup";
+@use "components/stats";

@@ -1,0 +1,118 @@
+@use "../abstracts" as *;
+
+// App shell: side rail on desktop, tab bar on phones.
+.app { min-height: 100dvh; }
+
+// ---------- desktop rail ----------
+.rail {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 30;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: $rail-w;
+  padding: 22px 0;
+  background: var(--white);
+  border-right: 1px solid var(--line);
+
+  &__logo {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 22px;
+    border-radius: 16px;
+    background: var(--purple);
+    color: var(--white);
+    font-size: 24px;
+    transition: transform .45s $spring;
+
+    &:hover { transform: rotate(-10deg) scale(1.1); }
+  }
+
+  &__nav { display: grid; gap: 6px; }
+  &__spacer { flex: 1; }
+}
+
+// ---------- navigation buttons (rail + tab bar) ----------
+.navbtn {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+  width: 68px;
+  padding: 10px 0 8px;
+  border-radius: 18px;
+  color: var(--ink-3);
+  font-size: 11.5px;
+  font-weight: 500;
+  text-decoration: none;
+  @include pressable(.9);
+
+  .ic { font-size: 22px; transition: transform .4s $spring; }
+  &:hover { color: var(--ink); background: var(--fill); }
+
+  &.is-on {
+    color: var(--purple);
+    background: var(--purple-t);
+    font-weight: 600;
+
+    .ic { animation: pop .5s $spring; }
+  }
+}
+
+// ---------- main column ----------
+.main { min-width: 0; padding-bottom: calc(#{$tabbar-h} + 24px + env(safe-area-inset-bottom)); }
+
+.view {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 22px 18px 0;
+  animation: rise .45s $ease both;
+}
+
+// view header: big title, subtitle, actions on the right
+.vh {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 18px;
+
+  &__title { font-size: 34px; }
+  &__sub { margin-top: 2px; color: var(--ink-3); font-size: 14px; font-weight: 500; }
+  &__actions { margin-left: auto; display: flex; gap: 8px; }
+}
+
+// ---------- phone tab bar ----------
+.tabbar {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: calc(#{$tabbar-h} + env(safe-area-inset-bottom));
+  padding: 6px 10px env(safe-area-inset-bottom);
+  background: color-mix(in srgb, var(--white) 88%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-top: 1px solid var(--line);
+
+  .navbtn {
+    width: auto;
+    padding: 8px 0 6px;
+    font-size: 10.5px;
+
+    .ic { font-size: 24px; }
+  }
+}
+
+// ---------- desktop ----------
+@include up(md) {
+  .rail { display: flex; }
+  .tabbar { display: none; }
+  .main { margin-left: $rail-w; padding-bottom: 60px; }
+  .view { padding: 36px 44px 0; }
+  .vh__title { font-size: 42px; }
+}

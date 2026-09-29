@@ -1,0 +1,75 @@
+@use "../abstracts" as *;
+
+// Sheets: bottom sheet on phones, side panel on desktop.
+dialog.sheet {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  height: 92dvh;
+  max-height: 92dvh;
+  margin: auto 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: $radius-lg $radius-lg 0 0;
+  background: var(--white);
+  color: var(--ink);
+  overflow: hidden;
+
+  &[open] { display: flex; animation: slide-up .5s $ease both; }
+  &.is-closing { animation: slide-down .3s ease-in both; }
+
+  &::backdrop { background: rgba(27, 27, 30, .5); backdrop-filter: blur(3px); animation: fade .3s both; }
+  &.is-closing::backdrop { animation: fade-out .3s both; }
+
+  @include up(md) {
+    width: min(560px, 100vw);
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0 0 0 auto;
+    border-radius: $radius-lg 0 0 $radius-lg;
+
+    &[open] { animation: slide-left .5s $ease both; }
+    &.is-closing { animation: slide-right .3s ease-in both; }
+  }
+}
+
+.sheet {
+  &__handle {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    z-index: 3;
+    width: 44px;
+    height: 5px;
+    border-radius: 99px;
+    background: color-mix(in srgb, var(--ink) 22%, transparent);
+    transform: translateX(-50%);
+    @include up(md) { display: none; }
+  }
+
+  &__scroll {
+    flex: 1;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    &:focus { outline: none; }
+  }
+
+  &__bar {
+    position: absolute;
+    inset: 14px 14px auto 14px;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 10px;
+    padding: 12px 18px calc(14px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--line);
+    background: var(--white);
+  }
+}

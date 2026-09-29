@@ -1,0 +1,45 @@
+@use "../abstracts" as *;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 24px;
+  border-radius: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  @include pressable(.95);
+
+  .ic { font-size: 22px; transition: transform .4s $spring; }
+  &:hover .ic { transform: rotate(-8deg) scale(1.12); }
+
+  &--primary { background: var(--purple); color: var(--white); &:hover { background: color-mix(in srgb, var(--purple) 88%, var(--ink)); } }
+  &--ink     { background: var(--ink); color: var(--white); }
+  &--soft    { background: var(--purple-t); color: var(--purple); &:hover { background: var(--purple-t2); } }
+  &--ghost   { background: var(--fill); color: var(--ink); &:hover { background: var(--fill-2); } }
+  &--block   { width: 100%; }
+}
+
+.iconbtn {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  background: var(--fill);
+  color: var(--ink);
+  font-size: 22px;
+  @include pressable(.88);
+
+  &:hover { background: var(--fill-2); .ic { transform: scale(1.12) rotate(-6deg); } }
+  .ic { transition: transform .35s $spring; }
+
+  &--light { background: color-mix(in srgb, var(--white) 82%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  &.is-on { color: var(--crimson); .ic { animation: pop .5s $spring; } }
+  &.is-flash { animation: pop .45s $spring; }
+}

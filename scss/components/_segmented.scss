@@ -1,0 +1,47 @@
+@use "../abstracts" as *;
+
+// Segmented control with a sliding indicator.
+// JS sets --n (options) and --idx (selected index).
+.seg {
+  --n: 2;
+  --idx: 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--n), 1fr);
+  padding: 4px;
+  border-radius: 18px;
+  background: var(--fill);
+
+  &__ind {
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: 4px;
+    width: calc((100% - 8px) / var(--n));
+    border-radius: 14px;
+    background: var(--white);
+    box-shadow: 0 1px 3px rgba(27, 27, 30, .14), 0 0 0 1px var(--line);
+    transform: translateX(calc(var(--idx) * 100%));
+    transition: transform .45s $spring;
+  }
+
+  &__btn {
+    --c: var(--ink);
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 46px;
+    border-radius: 14px;
+    color: var(--ink-3);
+    font-weight: 600;
+    transition: color .25s;
+
+    .ic { font-size: 20px; }
+    &.is-on { color: var(--ink); .ic { color: var(--c); animation: pop .45s $spring; } }
+  }
+
+  &--sm &__btn { height: 38px; font-size: 14px; }
+}

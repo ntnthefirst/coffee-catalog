@@ -1,0 +1,32 @@
+@use "../abstracts" as *;
+
+// Small popover menu (sort).
+.menu {
+  position: absolute;
+  z-index: 40;
+  min-width: 230px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--white);
+  box-shadow: 0 18px 50px rgba(27, 27, 30, .16), 0 2px 6px rgba(27, 27, 30, .06);
+  transform-origin: top right;
+  animation: menu-in .3s $spring both;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    height: 46px;
+    padding: 0 14px;
+    border-radius: 14px;
+    font-weight: 500;
+    text-align: left;
+    transition: background-color .15s;
+
+    .ic { font-size: 20px; color: var(--ink-3); }
+    &:hover { background: var(--fill); }
+    &.is-on { color: var(--purple); font-weight: 600; background: var(--purple-t); .ic { color: var(--purple); } }
+  }
+}
