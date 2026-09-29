@@ -1,0 +1,105 @@
+@use "../abstracts" as *;
+
+// ---------- tips sheet ----------
+.tp {
+  display: grid;
+  gap: 18px;
+  padding: 58px 18px 28px;
+
+  &__title { font-size: 32px; }
+
+  &__nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  &__note {
+    display: flex;
+    gap: 10px;
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: var(--pink-t);
+    color: var(--ink);
+    font-size: 14.5px;
+    .ic { flex: none; margin-top: 1px; color: var(--crimson); }
+  }
+}
+
+.iconbtn--ink { background: var(--ink); color: var(--white); &:hover { background: var(--ink); } &:disabled { opacity: .25; } }
+.tp__nav .iconbtn:disabled { opacity: .25; pointer-events: none; }
+
+// key numbers
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+
+  li {
+    display: grid;
+    gap: 3px;
+    padding: 14px 14px 12px;
+    border-radius: 20px;
+    background: color-mix(in srgb, var(--guide, var(--purple)) 11%, var(--white));
+    color: var(--guide, var(--purple));
+    animation: rise .5s $ease both;
+    animation-delay: calc(var(--i) * 70ms);
+    .ic { font-size: 21px; }
+    b { color: var(--ink); font-size: 21px; line-height: 1.05; font-weight: 600; }
+    small { color: var(--ink-2); font-size: 12.5px; font-weight: 500; }
+  }
+}
+
+// swipeable steps
+.slides {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  border-radius: $radius-lg;
+  &::-webkit-scrollbar { display: none; }
+  &:focus-visible { outline-offset: 4px; }
+}
+
+.slide {
+  flex: 0 0 100%;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  scroll-snap-align: start;
+
+  &__art {
+    position: relative;
+    border-radius: $radius-lg;
+    background: color-mix(in srgb, var(--guide, var(--purple)) 11%, var(--white));
+    margin-bottom: 8px;
+    overflow: hidden;
+    img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; }
+  }
+  &__n {
+    position: absolute;
+    left: 14px;
+    bottom: 12px;
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--white);
+    font-size: 19px;
+  }
+  &__title { font-size: 26px; }
+  &__text { color: var(--ink-2); font-size: 16.5px; line-height: 1.45; min-height: 3em; }
+}
+
+// progress dots
+.dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  &__d {
+    width: 9px;
+    height: 9px;
+    border-radius: 99px;
+    background: var(--fill-2);
+    transition: width .4s $spring, background-color .3s;
+    &.is-on { width: 28px; background: var(--guide, var(--purple)); }
+  }
+}
