@@ -30,7 +30,7 @@ export const recipeStats = (r) => cache[r.id] || (cache[r.id] = statsOf(r.ing, r
 /** category groups a recipe belongs to (used by the filter strip) */
 export function groupsOf(r) {
   const has = (fn) => r.ing.some(fn);
-  const dairyish = has((i) => i.t === "milk" || i.t === "foam" || i.t === "coldfoam" || i.t === "condensed" || (i.t === "sauce" && i.id === "condensed"));
+  const dairyish = has((i) => i.t === "milk" || i.t === "foam" || i.t === "coldfoam" || i.t === "condensed" || i.t === "cream" || (i.t === "sauce" && i.id === "condensed"));
   const g = new Set();
   if (r.tags.includes("classic")) g.add("classic");
   if (!dairyish && !has((i) => i.t === "icecream")) g.add("black");

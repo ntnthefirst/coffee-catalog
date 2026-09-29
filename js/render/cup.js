@@ -194,7 +194,7 @@ export function cupSVG(v, opts = {}) {
     if (k === "whipped") {
       const wr = rs * 0.86;
       out += `<g stroke="#e4d5b8" stroke-width="1" fill="#fffaf0"><ellipse cx="${cx}" cy="${ys - 2}" rx="${wr}" ry="${rys + 1}"/><ellipse cx="${cx}" cy="${ys - 10}" rx="${wr * 0.74}" ry="${rys * 0.8 + 4}"/><ellipse cx="${cx}" cy="${ys - 18}" rx="${wr * 0.5}" ry="${rys * 0.6 + 3.5}"/><path d="M${cx - 5} ${ys - 21}Q${cx + 2} ${ys - 34} ${cx + 5} ${ys - 24}Q${cx + 2} ${ys - 21} ${cx - 5} ${ys - 21}Z"/></g>`;
-    } else if (k === "caramel" || k === "chocolate") {
+    } else if (k === "caramel" || k === "chocolate" || k === "honey") {
       const pts = [];
       for (let z = 0; z < 7; z++) pts.push(`${(cx - rs * 0.7 + z * (rs * 1.4 / 6)).toFixed(1)} ${(ys + lift + (z % 2 ? -rys * 0.55 : rys * 0.55)).toFixed(1)}`);
       out += `<polyline points="${pts.join(" ")}" fill="none" stroke="${col}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>`;

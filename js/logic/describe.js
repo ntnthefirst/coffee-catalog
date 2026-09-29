@@ -5,7 +5,7 @@ import { ml, grams } from "../core/dom.js";
 import { CONSTS } from "../data/config.js";
 import { MILK, SYRUP, TOPPING } from "./lookup.js";
 
-const TOP_AMOUNT = { whipped: "swirl", cocoa: "dusting", cinnamon: "dusting", cayenne: "pinch", caramel: "drizzle", chocolate: "drizzle", seasalt: "3–4 flakes" };
+const TOP_AMOUNT = { whipped: "swirl", cocoa: "dusting", cinnamon: "dusting", cayenne: "pinch", caramel: "drizzle", chocolate: "drizzle", seasalt: "3–4 flakes", nutmeg: "grating", honey: "drizzle" };
 const GARNISH = {
   orange: { label: "Orange", color: "#f39a1e" }, lemon: { label: "Lemon", color: "#f5d63d" }, lime: { label: "Lime", color: "#8cc63f" },
   mint: { label: "Mint", color: "#3f9a55" }, "cinnamon-stick": { label: "Cinnamon stick", color: "#8a4b26" },
